@@ -28,9 +28,8 @@ class ModelFilesController < ApplicationController
   private
 
   def send_file_content
-    filename = File.join(@library.path, @model.path, @file.filename)
-    response.headers["Content-Length"] = File.size(filename).to_s
-    send_file filename, disposition: :inline, type: @file.file_format.to_sym
+    filename = File.join(@model.path, @file.filename)
+    redirect_to "/files/#{filename}", allow_other_host: true
   rescue Errno::ENOENT
     head :internal_server_error
   end
