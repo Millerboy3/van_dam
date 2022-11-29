@@ -2,7 +2,7 @@
   <label for="tags" class="col-sm-2 col-form-label"><%= label %></label>
     <div class="form-control col-auto tag-container">
       <%= form.collection_select :tag_list, tags,
-        :name, :name, {}, {
+        :name, :name, {selected: selected}, {
           multiple: true,
           class: "form-select",
           name: name ? "#{name}[]" : nil,
