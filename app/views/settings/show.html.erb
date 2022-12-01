@@ -9,17 +9,17 @@
     This can make things quicker to load.
   </p>
 
-  <div class="form-check form-switch">
-    <%= form.check_box "pagination[models]", checked: @user.pagination_settings["models"], class: "form-check-input" %>
-    <%= form.label "Paginate models", for: "pagination[models]", class: "form-check-label"%>
+  <div class="row">
+    <%= form.label "Paginate models", for: "pagination[models]", class: "form-check-label col-sm-2"%>
+    <div class='col-auto form-switch'><%= form.check_box "pagination[models]", checked: @user.pagination_settings["models"], class: "form-check-input" %></div>
   </div>
-  <div class="form-check form-switch">
-    <%= form.check_box "pagination[creators]", checked: @user.pagination_settings["creators"], class: "form-check-input" %>
-    <%= form.label "Paginate creators", for: "pagination[creators]", class: "form-check-label"%>
+  <div class="row">
+    <%= form.label "Paginate creators", for: "pagination[creators]", class: "form-check-label col-sm-2"%>
+    <div class='col-auto form-switch'><%= form.check_box "pagination[creators]", checked: @user.pagination_settings["creators"], class: "form-check-input" %></div>
   </div>
-  <div class="">
-    <%= form.label "Items per page", for: "pagination[per_page]", class: "form-label"%>
-    <%= form.number_field "pagination[per_page]", value: @user.pagination_settings["per_page"], in: 1..100, class: 'form-control' %>
+  <div class="row">
+    <%= form.label "Items per page", for: "pagination[per_page]", class: "col-sm-2 form-label"%>
+    <div class='col-auto'><%= form.number_field "pagination[per_page]", value: @user.pagination_settings["per_page"], in: 1..100, class: 'form-control' %></div>
   </div>
 
   <h2>Renderer</h2>
@@ -28,9 +28,9 @@
     Customise settings for 3d rendered previews.
   </p>
 
-  <div class="">
-    <%= form.label "Ground plane size (mm)", for: "renderer[grid_width]", class: "form-label"%>
-    <%= form.number_field "renderer[grid_width]", value: @user.renderer_settings["grid_width"], class: "form-control" %>
+  <div class="row">
+    <%= form.label "Ground plane size (mm)", for: "renderer[grid_width]", class: "form-label col-sm-2"%>
+    <div class='col-auto'><%= form.number_field "renderer[grid_width]", value: @user.renderer_settings["grid_width"], class: "form-control" %></div>
   </div>
 
   <% if current_user.admin? %>
@@ -41,13 +41,15 @@
       Configure how auto-tagging works, and filters out certain words ("stop words").
     </p>
 
-    <div class="form-check form-switch">
-      <%= form.check_box "model_tags[filter_stop_words]", checked: SiteSettings.model_tags_filter_stop_words, class: "form-check-input" %>
-      <%= form.label "Filter out stop words", for: "model_tags[filter_stop_words]", class: "form-check-label"%>
+    <div class="row">
+      <%= form.label "Filter out stop words", for: "model_tags[filter_stop_words]", class: "col-sm-2 form-check-label"%>
+      <div class='col-auto form-switch'><%= form.check_box "model_tags[filter_stop_words]", checked: SiteSettings.model_tags_filter_stop_words, class: "form-check-input" %></div>
     </div>
-    <div class="">
-      <%= form.label "Stop words locale", for: "model_tags[stop_words_locale]", class: "form-label"%>
-      <%= form.text_field "model_tags[stop_words_locale]", value: SiteSettings.model_tags_stop_words_locale, class: 'form-control' %>
+    <div class="row">
+      <%= form.label "Stop words locale", for: "model_tags[stop_words_locale]", class: "col-sm-2 col-form-label"%>
+      <div class="col-auto">
+        <%= form.text_field "model_tags[stop_words_locale]", value: SiteSettings.model_tags_stop_words_locale, class: 'form-control' %>
+      </div>
     </div>
     <div class="">
       <%= form.label "Custom stop words", for: "model_tags[custom_stop_words]", class: "form-label"%>
@@ -56,7 +58,7 @@
     <%= render 'models/tags_edit', form: form, name: "model_tags[auto_tag_new]",
       selected: SiteSettings.model_tags_auto_tag_new,
       label: "Automatically tag new models with",
-      tags: ActsAsTaggableOn::Tag.for_context(:tags)
+      tags: ActsAsTaggableOn::Tag.for_context(:tags)# + SiteSettings.model_tags_auto_tag_new
     %>
 
   <% end %>
