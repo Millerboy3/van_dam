@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require "rack/contrib"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -32,5 +33,7 @@ module VanDam
         )
       end
     end
+
+    config.middleware.use Rack::Locale
   end
 end
