@@ -96,3 +96,5 @@ gem "mittsu", github: "danini-the-panini/mittsu", ref: "7f44c46"
 
 gem "view_component", "~> 3.3"
 gem "rack-contrib", "~> 2.3"
+
+gem "rails-i18n", "~> 7.0"

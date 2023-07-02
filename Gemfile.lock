@@ -507,6 +507,7 @@ DEPENDENCIES
   rack-contrib (~> 2.3)
   rack-mini-profiler (~> 3.1)
   rails (~> 7.0.6)
+  rails-i18n (~> 7.0)
   rails-settings-cached (~> 2.9)
   redis (~> 5.0)
   rspec-rails
