@@ -6,10 +6,10 @@ services:
     ports:
       - 3214:3214
     volumes:
-      - /path/to/your/libraries:/libraries
+      - /mnt/user/3D/van_damn/data:/libraries
     environment:
       DATABASE_URL: postgresql://van_dam:password@db/van_dam?pool=5
-      SECRET_KEY_BASE: a_nice_long_random_string
+      SECRET_KEY_BASE: fizzy3dprintingterrance
       REDIS_URL: redis://redis:6379/1
       # RAILS_RELATIVE_URL_ROOT: /vandam Sets the root of the app to /vandam useful for reverse proxies with nginx
     depends_on:
@@ -39,7 +39,7 @@ services:
       - vandam
 
 volumes:
-  db_data:
+  db_data:/mnt/user/3D/van_damn/sql
 
 
 networks:
